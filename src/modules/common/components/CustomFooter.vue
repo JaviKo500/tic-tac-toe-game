@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
+  <footer class="footer sm:footer-horizontal bg-base-200 text-base-content p-10 flex-none">
     <aside>
     <AzuIcon/>
     <p>
@@ -11,8 +11,6 @@
   <nav>
     <h6 class="footer-title">Services</h6>
     <a class="link link-hover">Design</a>
-    <a class="link link-hover">Landing</a>
-    <a class="link link-hover">Development Apps</a>
     <a class="link link-hover">Custom software</a>
   </nav>
   <nav>
@@ -24,7 +22,6 @@
     <h6 class="footer-title">Legal</h6>
     <a class="link link-hover">Terms of use</a>
     <a class="link link-hover">Privacy policy</a>
-    <a class="link link-hover">Cookie policy</a>
   </nav>
   </footer>
 </template>
