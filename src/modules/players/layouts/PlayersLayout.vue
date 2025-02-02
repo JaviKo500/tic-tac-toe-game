@@ -1,12 +1,12 @@
 
 <template>
-  <div class="flex flex-col h-screen">
-    <main class="flex-grow p-4">
+  <div class="flex justify-center items-center h-screen">
+    <CustomMenu/>
+    <main class="flex-grow p-4 h-screen">
       <RouterView />
     </main>
-    <CustomFooter />
   </div>
 </template>
 <script setup lang="ts">
-  import CustomFooter from '@/modules/common/components/CustomFooter.vue';  
+  import CustomMenu from '../components/CustomMenu.vue';
 </script>

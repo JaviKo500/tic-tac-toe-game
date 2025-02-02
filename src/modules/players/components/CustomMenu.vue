@@ -1,0 +1,26 @@
+
+
+<template>
+  <ul class="menu bg-base-200 rounded-box">
+  <li>
+    <RouterLink :to="{ name: 'home-view' }">
+      <HomeIcon />
+    </RouterLink>
+  </li>
+  <li>
+    <a>
+      <AddUserIcon />
+    </a>
+  </li>
+  <li>
+    <a>
+      <InfoIcon />
+    </a>
+  </li>
+</ul>
+</template>
+<script setup lang="ts">
+  import AddUserIcon from '@/modules/common/icons/AddUserIcon.vue';
+import HomeIcon from '@/modules/common/icons/HomeIcon.vue';
+  import InfoIcon from '@/modules/common/icons/InfoIcon.vue';
+</script>
