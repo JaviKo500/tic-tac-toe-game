@@ -8,20 +8,13 @@
         </div>
         <input type="text" class="input w-full" placeholder="Type here" />
 
-        <div class="mt-1">
-          Gender
-        </div>
-        <div class="flex gap-2 mt-1">
-          <input type="radio" name="male" class="radio radio-primary"  />
-          Male
-        </div>
-        <div class="flex gap-2 mt-1">
-          <input type="radio" name="female" class="radio radio-primary" />
-          Female
-        </div>
-        <div class="flex gap-2 mt-1">
-          <input type="radio" name="other" class="radio radio-primary" />
-          Other
+        <label for="genders" class="form-label mt-2">Genders</label>
+        <div class="flex flex-wrap gap-2">
+          <button type="button" 
+            :class = "[
+              'p-2 rounded w-14 mr-2 flex-1',
+            ]"
+            >Male</button>
         </div>
       </div>
     </template>
