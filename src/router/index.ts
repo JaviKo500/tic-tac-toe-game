@@ -1,5 +1,7 @@
-import HomeLayout from '@/modules/home/layouts/HomeLayout.vue'
+import { playersRoutes } from '@/modules/players/routes'
 import { createRouter, createWebHistory } from 'vue-router'
+
+import HomeLayout from '@/modules/home/layouts/HomeLayout.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,7 +17,8 @@ const router = createRouter({
           component: () => import('@/modules/home/views/HomeView.vue')
         }
       ]
-    }
+    },
+    playersRoutes,
   ],
 })
 

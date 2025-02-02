@@ -11,7 +11,9 @@
           </div>
         </template>
       </CustomCard>
-      <button class="btn w-full py-10 btn-soft btn-primary">New Game</button>
+      <RouterLink class="btn w-full py-10 btn-soft btn-primary" :to="{ name: 'players-layout' }">
+        New Game
+      </RouterLink>
       <button class="btn w-full py-8 btn-soft">Options</button>
     </div>
   </div>
@@ -19,5 +21,6 @@
 <script setup lang="ts">
   import CustomCard from '@/modules/common/components/CustomCard.vue';
 import HomeNavbar from '../components/HomeNavbar.vue';
+import { RouterLink } from 'vue-router';
   
 </script>
