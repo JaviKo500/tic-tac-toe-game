@@ -1,7 +1,7 @@
 
 <template>
   <div class="flex flex-col h-screen">
-    <main class="flex-grow">
+    <main class="flex-grow p-4">
       <RouterView />
     </main>
     <CustomFooter />
