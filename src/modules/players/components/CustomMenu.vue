@@ -8,7 +8,7 @@
     </RouterLink>
   </li>
   <li>
-    <a>
+    <a @click="$emit('open-add-user-modal')">
       <AddUserIcon />
     </a>
   </li>
@@ -21,6 +21,8 @@
 </template>
 <script setup lang="ts">
   import AddUserIcon from '@/modules/common/icons/AddUserIcon.vue';
-import HomeIcon from '@/modules/common/icons/HomeIcon.vue';
+  import HomeIcon from '@/modules/common/icons/HomeIcon.vue';
   import InfoIcon from '@/modules/common/icons/InfoIcon.vue';
+
+  defineEmits(['open-add-user-modal']);
 </script>

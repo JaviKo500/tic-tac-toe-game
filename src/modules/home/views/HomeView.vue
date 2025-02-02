@@ -21,8 +21,9 @@
   </div>
 </template>
 <script setup lang="ts">
-  import CustomCard from '@/modules/common/components/CustomCard.vue';
-import HomeNavbar from '../components/HomeNavbar.vue';
-import { RouterLink } from 'vue-router';
+  import { RouterLink } from 'vue-router';
   
+  import CustomCard from '@/modules/common/components/CustomCard.vue';
+  import HomeNavbar from '../components/HomeNavbar.vue';
+    
 </script>
