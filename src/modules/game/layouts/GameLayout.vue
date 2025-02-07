@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col h-screen">
-    <main class="flex-grow">
+    <main class="flex-grow flex">
       <RouterView/>
     </main>
     <CustomFooter/>
