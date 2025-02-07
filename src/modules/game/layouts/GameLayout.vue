@@ -1,5 +1,4 @@
-
-<template>  
+<template>
   <div class="flex flex-col h-screen">
     <main class="flex-grow">
       <RouterView/>
