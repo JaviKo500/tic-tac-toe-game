@@ -10,7 +10,7 @@
               <slot name="content"/>
             </div>
           </div>
-          <div class="bg-base-200 px-4 py-3 sm:flex sm:justify-end sm:gap-4 sm:flex-row sm:px-6" v-if="$slots.footer">
+          <div class="bg-base-200 px-4 py-3 flex justify-end gap-4 flex-row px-6" v-if="$slots.footer">
             <slot name="footer"/>
           </div>
         </div>
