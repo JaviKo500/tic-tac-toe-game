@@ -24,8 +24,8 @@
 </template>
 <script setup lang="ts">
   import CustomCard from '@/modules/common/components/CustomCard.vue';  
-import CustomEmptyData from '@/modules/common/components/CustomEmptyData.vue';
-import { getFirstLetter } from '@/modules/common/helpers';
+  import CustomEmptyData from '@/modules/common/components/CustomEmptyData.vue';
+  import { getFirstLetter } from '@/modules/common/helpers';
   import { usePlayersStore } from '@/modules/players/store/players.store';
   const playersStore = usePlayersStore();
 </script>
