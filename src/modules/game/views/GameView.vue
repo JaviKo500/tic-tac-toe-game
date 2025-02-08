@@ -45,7 +45,7 @@
 </template>
 <script setup lang="ts">
   import CircleIcon from '@/modules/common/icons/CircleIcon.vue';
-import ClockIcon from '@/modules/common/icons/ClockIcon.vue';
+  import ClockIcon from '@/modules/common/icons/ClockIcon.vue';
   import CloseIcon from '@/modules/common/icons/CloseIcon.vue';
 </script>
 <style lang="css" scoped>
