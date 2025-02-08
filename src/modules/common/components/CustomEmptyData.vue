@@ -4,10 +4,10 @@
     <div class="absolute inset-px rounded-lg max-lg:rounded-2xl"></div>
     <div class="relative flex flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)]">
       <div class="px-8 pt-8 sm:px-10 sm:pt-10">
-        <p class="mt-2 text-lg font-medium tracking-tight text-gray-300 max-lg:text-center">{{ title }}</p>
-        <p class="mt-2 max-w-lg text-sm/6 text-gray-400 max-lg:text-center" v-if="message">{{ message }}</p>
+        <p class="mt-2 text-lg font-medium tracking-tight text-gray-300 text-center">{{ title }}</p>
+        <p class="mt-2 max-w-lg text-sm/6 text-gray-400 text-center" v-if="message">{{ message }}</p>
       </div>
-      <div class="flex flex-1 items-center justify-center px-8 max-lg:pt-6 max-lg:pb-10 sm:px-10 lg:pb-2">
+      <div class="flex flex-1 items-center justify-center px-8 pt-6 max-lg:pb-10 sm:px-10 lg:pb-4">
         <div class="h-16 w-16">
           <EmptyIcon/>
         </div>
