@@ -1,0 +1,1 @@
+export const getFirstLetter = (str: string) => str ? str.charAt(0).toUpperCase() : '#';

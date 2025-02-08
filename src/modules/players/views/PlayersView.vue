@@ -1,6 +1,6 @@
 
 <template>
-  <h1 class="text-center text-4xl font-bold m-5">Players</h1>
+  <h1 class="text-center text-4xl font-bold m-5" v-if="!playersStore.noPlayers">Players</h1>
   <div class=" flex justify-center gap-4 items-center">
     <div class="w-40" v-for="player in playersStore.players" :key="player.id">
       <CustomCard>
@@ -8,17 +8,24 @@
           <div class="flex justify-center">
             <div class="avatar avatar-placeholder  avatar-online">
               <div class="bg-neutral text-neutral-content w-24 rounded-full">
-                <span class="text-3xl">D</span>
+                <span class="text-3xl">{{ getFirstLetter(player.nickname) }}</span>
               </div>
             </div>
+            <span class="text-1xl">{{ player.nickname }}</span>
           </div>
         </template>
       </CustomCard>
     </div>
+    <CustomEmptyData 
+      :show="playersStore.noPlayers" 
+      title="Not players"
+      message="Add a player to see his stats or init game"/>
   </div>
 </template>
 <script setup lang="ts">
   import CustomCard from '@/modules/common/components/CustomCard.vue';  
+import CustomEmptyData from '@/modules/common/components/CustomEmptyData.vue';
+import { getFirstLetter } from '@/modules/common/helpers';
   import { usePlayersStore } from '@/modules/players/store/players.store';
   const playersStore = usePlayersStore();
 </script>
