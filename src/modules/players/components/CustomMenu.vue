@@ -13,9 +13,9 @@
     </a>
   </li>
   <li>
-    <a>
+    <RouterLink :to="{ name: 'game-layout' }">
       <InfoIcon />
-    </a>
+    </RouterLink>
   </li>
 </ul>
 </template>
