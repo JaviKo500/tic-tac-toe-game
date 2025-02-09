@@ -8,14 +8,19 @@
             Nickname
           </div>
           <input type="text" class="input w-full" placeholder="Type here" v-model="nickname" />
-          <label for="genders" class="form-label mt-2">Genders</label>
+          <label for="genders" class="form-label mt-2">Gender</label>
           <div class="flex flex-wrap gap-2 my-1">
             <button type="button"  
               :class = "[
-                'p-2 rounded-full bg-gray-800 w-14 mr-2 flex-1', 
+                'p-2 rounded-full w-14 mr-2 flex-1', 
+                {
+                  'bg-gray-800': gender != genderOption.gender,
+                  'bg-sky-800': gender === genderOption.gender,
+                }
               ]"
-              v-for="gender in GENDERS" :key="gender.gender"
-              >{{ gender.label }}</button>
+              v-for="genderOption in GENDERS" :key="genderOption.gender"
+              @click="gender = genderOption.gender"
+              >{{ genderOption.label }}</button>
           </div>
         </div>
       </form>

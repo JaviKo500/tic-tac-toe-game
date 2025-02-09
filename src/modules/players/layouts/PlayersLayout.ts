@@ -15,6 +15,7 @@ export default defineComponent({
     const gender = ref<Gender>();
 
     const playersStore = usePlayersStore();
+
     const checkFormData = () => { 
       if ( !nickname.value ) {
         nickname.value = 'Player';
