@@ -22,6 +22,10 @@
               @click="gender = genderOption.gender"
               >{{ genderOption.label }}</button>
           </div>
+          <div class="my-1">
+            Color
+          </div>
+          <ColorPicker @selected-color="color = $event" />
         </div>
       </form>
     </template>

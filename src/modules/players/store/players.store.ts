@@ -9,7 +9,7 @@ export const usePlayersStore = defineStore ( 'players', () => {
     useLocalStorage<PlayerInterface[]>('players', [])
   );
 
-  const addPlayer = ({ nickname, gender }: { nickname: string, gender: Gender }) => {
+  const addPlayer = ({ nickname, gender, color }: { nickname: string, gender: Gender, color?: string }) => {
     const id = UuidAdapter.generate();
     const player: PlayerInterface = {
       id,
@@ -19,7 +19,8 @@ export const usePlayersStore = defineStore ( 'players', () => {
       games: 0,
       wins: 0,
       losses: 0,
-      points: 0
+      points: 0,
+      colorClass: color,
     };
     players.value.push(player);
   };

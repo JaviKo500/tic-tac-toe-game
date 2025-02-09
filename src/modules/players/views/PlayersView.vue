@@ -8,7 +8,10 @@
           <div class="text-center">
             <div class="flex justify-center">
               <div class="avatar avatar-placeholder avatar-online">
-                <div class="bg-neutral text-neutral-content w-24 rounded-full">
+                <div :class="[
+                  'bg-neutral text-neutral-content w-24 rounded-full',
+                  player.colorClass ? player.colorClass : 'bg-neutral',
+                ]">
                   <span class="text-3xl">{{ getFirstLetters(player.nickname, 2) }}</span>
                 </div>
               </div>
