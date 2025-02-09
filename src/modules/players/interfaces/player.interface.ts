@@ -5,6 +5,7 @@ export interface PlayerInterface {
   losses: number;
   nickname:string;
   points:number;
+  createdAt:Date;
   gender?:Gender;
   colorClass?:string;
 }
