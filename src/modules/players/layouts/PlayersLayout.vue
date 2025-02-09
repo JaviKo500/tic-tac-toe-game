@@ -2,7 +2,7 @@
 <template>
   <CustomModal :is-open="isOpenCustomModal" >
     <template #content>
-      <form action="">
+      <form action="" class="w-full">
         <div class="w-full">
           <div class="my-1">
             Nickname
