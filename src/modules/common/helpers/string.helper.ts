@@ -1,1 +1,1 @@
-export const getFirstLetter = (str: string) => str ? str.charAt(0).toUpperCase() : '#';
+export const getFirstLetters = (str: string, charts: number = 0 ) => str ? str.substring(0,charts).toUpperCase() : '#';

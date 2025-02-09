@@ -14,7 +14,7 @@ export const usePlayersStore = defineStore ( 'players', () => {
     const player: PlayerInterface = {
       id,
       createdAt: new Date(),
-      nickname: `${nickname} ${id.substring(0, 4)}`,
+      nickname: nickname === 'Player' ? `${nickname} ${id.substring(0, 4)}` : nickname,
       gender,
       games: 0,
       wins: 0,
