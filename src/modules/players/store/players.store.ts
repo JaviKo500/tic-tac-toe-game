@@ -3,11 +3,14 @@ import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
 import type { Gender, PlayerInterface } from '../interfaces/player.interface';
 import { UuidAdapter } from '@/modules/common/adapters';
+import { delay } from '@/modules/common/helpers';
 
 export const usePlayersStore = defineStore ( 'players', () => {
   const players = ref(
     useLocalStorage<PlayerInterface[]>('players', [])
   );
+
+  const isLoading = ref(false);
 
   const addPlayer = ({ nickname, gender, color }: { nickname: string, gender: Gender, color?: string }) => {
     const id = UuidAdapter.generate();
@@ -25,12 +28,18 @@ export const usePlayersStore = defineStore ( 'players', () => {
     players.value.push(player);
   };
 
-  const getPlayerById = ( id: string ) => {
-    return players.value.find((player) => player.id === id);
+  const getPlayerById = async ( id: string ) => {
+    isLoading.value = true;
+    const player = players.value.find((player) => player.id === id);
+    await delay(1000);
+    isLoading.value = false;
+    return player;
   }
+
   return {
     // * properties
     players,
+    isLoading,
     // * getters
     noPlayers: computed(() => !players.value.length),
     // * actions
