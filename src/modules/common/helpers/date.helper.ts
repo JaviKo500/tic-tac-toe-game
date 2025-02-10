@@ -1,0 +1,1 @@
+export const stringToDate = (date: string) => new Date(date);
