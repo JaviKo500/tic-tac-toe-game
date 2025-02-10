@@ -1,14 +1,22 @@
 <template>
   <CustomLoading :is-loading="playersStore.isLoading" />
-  <p v-if="!player">Player not found</p>
-  <h1 v-else class="text-center text-4xl font-bold m-5">{{player?.nickname}}</h1>
-  {{ id }}
+  <CustomEmptyData
+    :show="!player && !playersStore.isLoading"
+    title="Player not found"
+    message="Try again later"
+  />
+  <div class="" v-if="player && !playersStore.isLoading">
+    <h1  class="text-center text-4xl font-bold m-5">{{player?.nickname}}</h1>
+  </div>
 </template>
 <script setup lang="ts">
-import { ref, watch } from 'vue';
-import { usePlayersStore } from '../store/players.store';
-import type { PlayerInterface } from '../interfaces/player.interface';
-import CustomLoading from '@/modules/common/components/CustomLoading.vue';
+  import { ref, watch } from 'vue';
+
+  import CustomLoading from '@/modules/common/components/CustomLoading.vue';
+  import CustomEmptyData from '@/modules/common/components/CustomEmptyData.vue';
+
+  import { usePlayersStore } from '../store/players.store';
+  import type { PlayerInterface } from '../interfaces/player.interface';
 
   interface Props {
     id: string;
