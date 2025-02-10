@@ -24,6 +24,10 @@ export const usePlayersStore = defineStore ( 'players', () => {
     };
     players.value.push(player);
   };
+
+  const getPlayerById = ( id: string ) => {
+    return players.value.find((player) => player.id === id);
+  }
   return {
     // * properties
     players,
@@ -31,5 +35,6 @@ export const usePlayersStore = defineStore ( 'players', () => {
     noPlayers: computed(() => !players.value.length),
     // * actions
     addPlayer,
+    getPlayerById,
   };
 });
