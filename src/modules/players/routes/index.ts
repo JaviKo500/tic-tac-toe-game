@@ -11,5 +11,11 @@ export const playersRoutes: RouteRecordRaw = {
       name: 'players-view',
       component: () => import('@/modules/players/views/PlayersView.vue'),
     },
+    {
+      path: ':id',
+      name: 'player-view',
+      props: true,
+      component: () => import('@/modules/players/views/PlayerView.vue'),
+    }
   ],
 };

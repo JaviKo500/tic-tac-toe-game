@@ -17,6 +17,14 @@
               </div>
             </div>
             <span class="text-1xl">{{ player.nickname }}</span>
+            <div class="flex justify-center mt-1 cursor-pointer">
+              <RouterLink :to="{
+                name: 'player-view',
+                params: { id: player.id },
+              }">
+                <InfoIcon/>
+              </RouterLink>
+            </div>
           </div>
         </template>
       </CustomCard>
@@ -30,6 +38,7 @@
 <script setup lang="ts">
   import CustomCard from '@/modules/common/components/CustomCard.vue';  
   import CustomEmptyData from '@/modules/common/components/CustomEmptyData.vue';
+  import InfoIcon from '@/modules/common/icons/InfoIcon.vue';
   import { getFirstLetters } from '@/modules/common/helpers';
   import { usePlayersStore } from '@/modules/players/store/players.store';
   const playersStore = usePlayersStore();
