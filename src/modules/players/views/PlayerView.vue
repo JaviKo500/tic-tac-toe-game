@@ -43,7 +43,7 @@ import { ref, watch } from 'vue';
 import CustomLoading from '@/modules/common/components/CustomLoading.vue';
 import CustomEmptyData from '@/modules/common/components/CustomEmptyData.vue';
 import TicTacToeIcon from '@/modules/common/icons/TicTacToeIcon.vue';
-import TicTacWins from '@/modules/common/icons/TicTacWins.vue';
+import TicTacWins from '@/modules/common/icons/TicTacWinsIcons.vue';
 
 import { stringToDate } from '@/modules/common/helpers';
 
