@@ -24,11 +24,7 @@
 
         <div class="stat">
           <div class="stat-figure text-secondary">
-            <div class="avatar online">
-              <div class="w-16 rounded-full">
-                <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-              </div>
-            </div>
+            <CustomAvatar :player="player" />
           </div>
           <div class="stat-value">{{ getPercentageWins(player.wins, player.games) }}%</div>
           <div class="stat-title">Percentage Wins</div>
@@ -50,6 +46,7 @@ import { stringToDate } from '@/modules/common/helpers';
 import { usePlayersStore } from '../store/players.store';
 
 import type { PlayerInterface } from '../interfaces/player.interface';
+import CustomAvatar from '@/modules/common/components/CustomAvatar.vue';
 
 interface Props {
   id: string;

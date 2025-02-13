@@ -5,16 +5,7 @@
       <CustomCard>
         <template #content>
           <div class="text-center">
-            <div class="flex justify-center">
-              <div class="avatar avatar-placeholder avatar-online">
-                <div :class="[
-                  'bg-neutral text-neutral-content w-24 rounded-full',
-                  player.colorClass ? player.colorClass : 'bg-neutral',
-                ]">
-                  <span class="text-3xl">{{ getFirstLetters(player.nickname, 2) }}</span>
-                </div>
-              </div>
-            </div>
+            <CustomAvatar :player="player" :size="'w-24'" />
             <span class="text-1xl">{{ player.nickname }}</span>
             <div class="flex justify-center mt-1 cursor-pointer">
               <RouterLink :to="{
@@ -36,7 +27,7 @@
 import CustomCard from '@/modules/common/components/CustomCard.vue';
 import CustomEmptyData from '@/modules/common/components/CustomEmptyData.vue';
 import InfoIcon from '@/modules/common/icons/InfoIcon.vue';
-import { getFirstLetters } from '@/modules/common/helpers';
 import { usePlayersStore } from '@/modules/players/store/players.store';
+import CustomAvatar from '@/modules/common/components/CustomAvatar.vue';
 const playersStore = usePlayersStore();
 </script>
