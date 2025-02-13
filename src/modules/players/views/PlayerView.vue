@@ -30,9 +30,8 @@
               </div>
             </div>
           </div>
-          <div class="stat-value">86%</div>
-          <div class="stat-title">Tasks done</div>
-          <div class="stat-desc text-secondary">31 tasks remaining</div>
+          <div class="stat-value">{{ getPercentageWins(player.wins, player.games) }}%</div>
+          <div class="stat-title">Percentage Wins</div>
         </div>
       </div>
     </div>
@@ -59,6 +58,12 @@ const props = defineProps<Props>();
 
 const playersStore = usePlayersStore();
 const player = ref<PlayerInterface | undefined>(undefined);
+
+const getPercentageWins = (wins: number, games: number) => {
+  if (games === 0) return 0;
+  const percentage = (wins / games) * 100;
+  return percentage.toFixed(2);
+}
 
 watch(
   () => props.id,

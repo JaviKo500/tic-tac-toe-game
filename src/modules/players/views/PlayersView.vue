@@ -1,4 +1,3 @@
-
 <template>
   <h1 class="text-center text-4xl font-bold m-5" v-if="!playersStore.noPlayers">Players</h1>
   <div class=" flex justify-center gap-4 items-center flex-wrap">
@@ -22,24 +21,22 @@
                 name: 'player-view',
                 params: { id: player.id },
               }">
-                <InfoIcon/>
+                <InfoIcon />
               </RouterLink>
             </div>
           </div>
         </template>
       </CustomCard>
     </div>
-    <CustomEmptyData 
-      :show="playersStore.noPlayers" 
-      title="Not players"
-      message="Add a player to see his stats or init game"/>
+    <CustomEmptyData :show="playersStore.noPlayers" title="Not players"
+      message="Add a player to see his stats or init game" />
   </div>
 </template>
 <script setup lang="ts">
-  import CustomCard from '@/modules/common/components/CustomCard.vue';  
-  import CustomEmptyData from '@/modules/common/components/CustomEmptyData.vue';
-  import InfoIcon from '@/modules/common/icons/InfoIcon.vue';
-  import { getFirstLetters } from '@/modules/common/helpers';
-  import { usePlayersStore } from '@/modules/players/store/players.store';
-  const playersStore = usePlayersStore();
+import CustomCard from '@/modules/common/components/CustomCard.vue';
+import CustomEmptyData from '@/modules/common/components/CustomEmptyData.vue';
+import InfoIcon from '@/modules/common/icons/InfoIcon.vue';
+import { getFirstLetters } from '@/modules/common/helpers';
+import { usePlayersStore } from '@/modules/players/store/players.store';
+const playersStore = usePlayersStore();
 </script>
