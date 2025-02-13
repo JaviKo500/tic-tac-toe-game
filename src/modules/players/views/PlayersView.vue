@@ -4,8 +4,8 @@
     <div class="w-40" v-for="player in playersStore.players" :key="player.id">
       <CustomCard>
         <template #content>
-          <div class="text-center">
-            <CustomAvatar :player="player" :size="'w-24'" />
+          <div class="text-center p-6" @click="gameStore.addPlayerToGame(player)">
+            <CustomAvatar :player="player" :size="'w-24'" :is-active="gameStore.checkExistPlayer(player)" />
             <span class="text-1xl">{{ player.nickname }}</span>
             <div class="flex justify-center mt-1 cursor-pointer">
               <RouterLink :to="{
@@ -27,7 +27,10 @@
 import CustomCard from '@/modules/common/components/CustomCard.vue';
 import CustomEmptyData from '@/modules/common/components/CustomEmptyData.vue';
 import InfoIcon from '@/modules/common/icons/InfoIcon.vue';
-import { usePlayersStore } from '@/modules/players/store/players.store';
 import CustomAvatar from '@/modules/common/components/CustomAvatar.vue';
+
+import { useGameStore } from '@/modules/game/store/game.store';
+import { usePlayersStore } from '@/modules/players/store/players.store';
 const playersStore = usePlayersStore();
+const gameStore = useGameStore();
 </script>
