@@ -4,7 +4,7 @@
       disable:opacity-50 disabled:shadow-none disabled:pointer-events-none text-md 
       py-2 px-6 bg-gradient-to-tr from-purple-900 to-purple-800 text-white shadow-md 
       shadow-purple-900/10 hover:shadow-lg hover:shadow-purple-900/20 active:opacity-[0.85] 
-      rounded-full mr-1 mb-5 lg:mr-5 lg:mb-5 xl:mr-10 xl:mb-10" type="button">
+      rounded-full mr-1 mb-5 lg:mr-5 lg:mb-5 xl:mr-10 xl:mb-10" type="button" @click="$emit('click')">
       <StartGameIcon /> {{ text }}
     </button>
   </div>
@@ -21,4 +21,6 @@ withDefaults(defineProps<Props>(), {
   show: false,
   text: 'Start game',
 });
+
+defineEmits(['click']);
 </script>

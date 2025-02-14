@@ -22,9 +22,10 @@
     <CustomEmptyData :show="playersStore.noPlayers" title="Not players"
       message="Add a player to see his stats or init game" />
   </div>
-  <CustomFloatingButton :show="gameStore.playersGame.length === 2" />
+  <CustomFloatingButton :show="gameStore.playersGame.length === 2" @click="navigateToGame" />
 </template>
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
 import CustomCard from '@/modules/common/components/CustomCard.vue';
 import CustomEmptyData from '@/modules/common/components/CustomEmptyData.vue';
 import InfoIcon from '@/modules/common/icons/InfoIcon.vue';
@@ -35,4 +36,9 @@ import { useGameStore } from '@/modules/game/store/game.store';
 import { usePlayersStore } from '@/modules/players/store/players.store';
 const playersStore = usePlayersStore();
 const gameStore = useGameStore();
+
+const router = useRouter();
+const navigateToGame = () => {
+  router.push({ name: 'game-view' });
+}
 </script>
