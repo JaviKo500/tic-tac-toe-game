@@ -2,9 +2,14 @@ import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
 import type { IconGame, PlayerInterface, PlayerSelectedInterface } from '@/modules/players/interfaces/player.interface';
+import { StatusGame, type GameInterface } from '../interfaces/game.interface';
 
 export const useGameStore = defineStore('game', () => {
   const playersGame = ref<PlayerSelectedInterface[]>([]);
+  const game = ref<GameInterface>({
+    winner: null,
+    status: StatusGame.SET_VALUES,
+  });
 
   const addPlayerToGame = (playerSelected: PlayerInterface) => {
     const playerFind = playersGame.value.find(({ player }) => player.id === playerSelected.id);
@@ -52,18 +57,25 @@ export const useGameStore = defineStore('game', () => {
       return playerGame;
     });
   }
+
+  const updateStatusGame = (status: StatusGame) => {
+    game.value.status = status; 
+  }
   return {
 
     // * properties
     playersGame,
+    game,
     // * getters
     checkExistPlayer: (playerSelected: PlayerInterface) => {
       const playerFind = playersGame.value.find( ({player}) => player.id === playerSelected.id );
       return playerFind ? true : false;
     },
+    currentStatus: () => game.value.status,
     // * actions
     addPlayerToGame,
     updateDefaultValuesPlayers,
     updateIconByPlayer,
+    updateStatusGame,
   };
 });

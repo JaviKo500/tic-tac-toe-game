@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="gameStore.currentStatus() === StatusGame.SET_VALUES">
     <div class="modal-backdrop fixed top-0 left-0 z-10 bg-black opacity-50 w-screen h-screen">
     </div>
     <div class="fixed z-10">
@@ -25,6 +25,11 @@
               </div>
             </div>
           </div>
+          <button
+            class="btn btn-primary text-white font-bold py-4 px-6 border-b-4 hover:border-b-2 hover:border-t-2 border-blue-dark rounded"
+            @click="gameStore.updateStatusGame(StatusGame.IN_PROGRESS)">
+            Start
+          </button>
         </div>
       </div>
     </div>
@@ -36,6 +41,7 @@ import CircleIcon from '@/modules/common/icons/CircleIcon.vue';
 import CloseIcon from '@/modules/common/icons/CloseIcon.vue';
 
 import { useGameStore } from '../store/game.store';
+import { StatusGame } from '../interfaces/game.interface';
 
 const gameStore = useGameStore();
 </script>
