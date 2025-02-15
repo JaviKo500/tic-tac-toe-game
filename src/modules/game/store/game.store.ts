@@ -16,9 +16,17 @@ export const useGameStore = defineStore('game', () => {
     playersGame.value.push({
       order: 0,
       player: playerSelected,
-      icon: '',
+      icon: 'O',
     });
   };
+
+  const updateDefaultValuesPlayers = () => {
+    playersGame.value = playersGame.value.map((playerGame, index) => ({
+      order: index + 1,
+      player: playerGame.player,
+      icon: index === 0 ? 'X' : 'O',
+    }));
+  }
   return {
 
     // * properties
@@ -30,5 +38,6 @@ export const useGameStore = defineStore('game', () => {
     },
     // * actions
     addPlayerToGame,
+    updateDefaultValuesPlayers,
   };
 });

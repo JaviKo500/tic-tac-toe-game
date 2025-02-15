@@ -16,7 +16,7 @@ export interface PlayerSelectedInterface {
   icon: IconGame;
 }
 
-export type IconGame = 'X' | 'O' | '';
+export type IconGame = 'X' | 'O';
 
 export type Gender = 'male' | 'female' | 'other';
 
