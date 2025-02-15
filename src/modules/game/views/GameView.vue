@@ -19,7 +19,7 @@
         <CircleIcon />
       </div>
     </div>
-    <div class="rounded-2xl shadow-xl p-2 bg-gray-600 my-4">
+    <div class="rounded-2xl shadow-xl p-2 bg-gray-600 my-4 mx-10">
       <div class="flex justify-between items-center gap-1">
         <ClockIcon />
         <progress class="progress progress-indigo w-full" value="40" max="100"></progress>
