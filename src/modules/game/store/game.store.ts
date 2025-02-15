@@ -1,27 +1,31 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
-import type { PlayerInterface } from '@/modules/players/interfaces/player.interface';
+import type { PlayerInterface, PlayerSelectedInterface } from '@/modules/players/interfaces/player.interface';
 
 export const useGameStore = defineStore('game', () => {
-  const playersGame = ref<PlayerInterface[]>([]);
+  const playersGame = ref<PlayerSelectedInterface[]>([]);
 
-  const addPlayerToGame = (player: PlayerInterface) => {
-    const playerFind = playersGame.value.find((playerGame) => playerGame.id === player.id);
+  const addPlayerToGame = (playerSelected: PlayerInterface) => {
+    const playerFind = playersGame.value.find(({ player }) => player.id === playerSelected.id);
     if ( playerFind ){
-      playersGame.value = playersGame.value.filter((playerGame) => playerGame.id !== player.id);
+      playersGame.value = playersGame.value.filter(({player}) => player.id !== playerSelected.id);
       return;
     };
     if (playersGame.value.length === 2) return;
-    playersGame.value.push(player);
+    playersGame.value.push({
+      order: 0,
+      player: playerSelected,
+      icon: '',
+    });
   };
   return {
 
     // * properties
     playersGame,
     // * getters
-    checkExistPlayer: (player: PlayerInterface) => {
-      const playerFind = playersGame.value.find( (playerGame) => playerGame.id === player.id );
+    checkExistPlayer: (playerSelected: PlayerInterface) => {
+      const playerFind = playersGame.value.find( ({player}) => player.id === playerSelected.id );
       return playerFind ? true : false;
     },
     // * actions
