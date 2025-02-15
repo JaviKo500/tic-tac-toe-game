@@ -1,5 +1,5 @@
 <template>
-  <div class="shadow-md h-screen">
+  <div class="shadow-md">
     <SelectIconByPlayer />
     <div
       class="col-start-1 row-start-1 grid grid-cols-[repeat(3,100px)] place-content-center gap-4 rounded-lg font-mono text-sm leading-6 font-bold text-white my-4">
@@ -25,31 +25,15 @@
         <progress class="progress progress-indigo w-full" value="40" max="100"></progress>
       </div>
     </div>
-    <div class="flex justify-evenly items-center gap-4 my-4">
-      <div class="rounded-2xl bg-green-500 card-player shadow-xl">
-        <div class="card-body text-center">
-          <div class="mx-auto rounded-full bg-cyan-900 p-4">
-            TE!
-          </div>
-          test
-        </div>
-      </div>
-      <div class="rounded-2xl bg-sky-500 card-player shadow-xl">
-        <div class="card-body text-center">
-          <div class="mx-auto rounded-full bg-cyan-900 p-4">
-            TE!
-          </div>
-          test
-        </div>
-      </div>
-    </div>
   </div>
+  <PlayersGame />
 </template>
 <script setup lang="ts">
 import CircleIcon from '@/modules/common/icons/CircleIcon.vue';
 import ClockIcon from '@/modules/common/icons/ClockIcon.vue';
 import CloseIcon from '@/modules/common/icons/CloseIcon.vue';
 import SelectIconByPlayer from '../components/SelectIconByPlayer.vue';
+import PlayersGame from '../components/PlayersGame.vue';
 </script>
 <style lang="css" scoped>
 .card-player {

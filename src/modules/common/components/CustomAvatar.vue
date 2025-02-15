@@ -5,7 +5,7 @@
       isActive ? 'avatar-online' : ''
     ]">
       <div :class="[
-        'bg-neutral text-neutral-content rounded-full',
+        'text-neutral-content rounded-full border-2',
         size,
         player.colorClass ? player.colorClass : 'bg-neutral',
       ]">
