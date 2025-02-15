@@ -29,24 +29,27 @@ export const useGameStore = defineStore('game', () => {
   }
 
   const updateIconByPlayer = ( playerId: string, iconSelected: IconGame ) => {
-    playersGame.value = playersGame.value.map((playerGame) => {
-      const { player, order, icon } = playerGame;
-      let newIcon = icon;
+    const isIconInUse = playersGame.value.some(
+      player => player.icon === iconSelected
+    );
+    
+    const alternativeIcon: IconGame = iconSelected === 'X' ? 'O' : 'X';
 
-      if ( player.id === playerId ) {
-        newIcon = iconSelected;
-      } else if ( newIcon === iconSelected ) {
-        if ( newIcon === 'X' ) {
-          newIcon = 'O';
-        } else {
-          newIcon = 'X';
-        }
+    playersGame.value = playersGame.value.map((playerGame) => {
+      const { player, icon } = playerGame;
+      if (player.id === playerId) {
+        return {
+          ...playerGame,
+          icon: iconSelected
+        };
       }
-      return {
-        order,
-        player,
-        icon: newIcon,
-      };
+      if (icon === iconSelected && isIconInUse) {
+        return {
+          ...playerGame,
+          icon: alternativeIcon
+        };
+      }
+      return playerGame;
     });
   }
   return {
