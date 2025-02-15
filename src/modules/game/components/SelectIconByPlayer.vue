@@ -7,6 +7,7 @@
         <div class="text-center">
           <div class="my-4" v-for="playerGame in gameStore.playersGame" :key="playerGame.player.id">
             <div class="bg-gray-800 border w-70 border-gray-800 shadow-lg  rounded-2xl p-4">
+              <p class="font-bold">Player #{{ playerGame.order }}</p>
               <div class="flex justify-between items-center">
                 <div class="text-center">
                   <CustomAvatar :player="playerGame.player" :is-active="true" />
