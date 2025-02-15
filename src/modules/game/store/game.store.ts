@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
-import type { PlayerInterface, PlayerSelectedInterface } from '@/modules/players/interfaces/player.interface';
+import type { IconGame, PlayerInterface, PlayerSelectedInterface } from '@/modules/players/interfaces/player.interface';
 
 export const useGameStore = defineStore('game', () => {
   const playersGame = ref<PlayerSelectedInterface[]>([]);
@@ -27,6 +27,28 @@ export const useGameStore = defineStore('game', () => {
       icon: index === 0 ? 'X' : 'O',
     }));
   }
+
+  const updateIconByPlayer = ( playerId: string, iconSelected: IconGame ) => {
+    playersGame.value = playersGame.value.map((playerGame) => {
+      const { player, order, icon } = playerGame;
+      let newIcon = icon;
+
+      if ( player.id === playerId ) {
+        newIcon = iconSelected;
+      } else if ( newIcon === iconSelected ) {
+        if ( newIcon === 'X' ) {
+          newIcon = 'O';
+        } else {
+          newIcon = 'X';
+        }
+      }
+      return {
+        order,
+        player,
+        icon: newIcon,
+      };
+    });
+  }
   return {
 
     // * properties
@@ -39,5 +61,6 @@ export const useGameStore = defineStore('game', () => {
     // * actions
     addPlayerToGame,
     updateDefaultValuesPlayers,
+    updateIconByPlayer,
   };
 });

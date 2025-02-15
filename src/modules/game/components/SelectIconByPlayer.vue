@@ -13,10 +13,11 @@
                   <span>{{ playerGame.player.nickname }}</span>
                 </div>
                 <div class="text-center w-20 h-20">
-                  <div class="" v-if="playerGame.icon === 'X'">
+                  <div class="" v-if="playerGame.icon === 'X'"
+                    @click="gameStore.updateIconByPlayer(playerGame.player.id, 'O')">
                     <CloseIcon />
                   </div>
-                  <div class="" v-else>
+                  <div class="" v-else @click="gameStore.updateIconByPlayer(playerGame.player.id, 'X')">
                     <CircleIcon />
                   </div>
                 </div>
