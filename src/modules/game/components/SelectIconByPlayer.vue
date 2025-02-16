@@ -1,6 +1,6 @@
 <template>
   <div v-if="gameStore.currentStatus() === StatusGame.SET_VALUES">
-    <div class="modal-backdrop fixed top-0 left-0 z-10 bg-black opacity-50 w-screen h-screen">
+    <div class="modal-backdrop fixed top-0 left-0 z-10 bg-black opacity-70 w-screen h-screen">
     </div>
     <div class="fixed z-10 w-full">
       <div class="flex justify-center items-center h-screen">
