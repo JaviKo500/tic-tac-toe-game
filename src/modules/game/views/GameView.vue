@@ -19,21 +19,22 @@
         <CircleIcon />
       </div>
     </div>
-    <div class="rounded-2xl shadow-xl p-2 bg-gray-600 my-4 mx-10">
-      <div class="flex justify-between items-center gap-1">
-        <ClockIcon />
-        <progress class="progress progress-indigo w-full" value="40" max="100"></progress>
-      </div>
+    <div class="text-center">
+      <span class="text-2xl font-bold">Turn: Player #{{ gameStore.currentTurn }}</span>
     </div>
+    <TimerProgress />
   </div>
   <PlayersGame />
 </template>
 <script setup lang="ts">
 import CircleIcon from '@/modules/common/icons/CircleIcon.vue';
-import ClockIcon from '@/modules/common/icons/ClockIcon.vue';
 import CloseIcon from '@/modules/common/icons/CloseIcon.vue';
+
 import SelectIconByPlayer from '../components/SelectIconByPlayer.vue';
 import PlayersGame from '../components/PlayersGame.vue';
+import TimerProgress from '../components/TimerProgress.vue';
+import { useGameStore } from '../store/game.store';
+const gameStore = useGameStore();
 </script>
 <style lang="css" scoped>
 .card-player {

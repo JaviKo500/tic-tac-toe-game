@@ -11,3 +11,5 @@ export const COLORS_CLASS: string[] = [
   'bg-stone-500',
   'bg-orange-500',
 ];
+
+export const TURN_TIME_LIMIT = 5000; // 5 seconds

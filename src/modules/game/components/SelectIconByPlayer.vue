@@ -27,7 +27,7 @@
           </div>
           <button
             class="btn btn-primary text-white font-bold py-6 px-12 border-b-4 hover:border-b-2 hover:border-t-2 border-blue-dark rounded"
-            @click="gameStore.updateStatusGame(StatusGame.IN_PROGRESS)">
+            @click="startGame">
             Start
           </button>
         </div>
@@ -44,4 +44,9 @@ import { useGameStore } from '../store/game.store';
 import { StatusGame } from '../interfaces/game.interface';
 
 const gameStore = useGameStore();
+
+const startGame = () => {
+  gameStore.updateStatusGame(StatusGame.IN_PROGRESS);
+  gameStore.updateTimeTurn();
+}
 </script>
