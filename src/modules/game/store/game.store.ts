@@ -3,12 +3,13 @@ import { ref } from 'vue';
 
 import type { IconGame, PlayerInterface, PlayerSelectedInterface } from '@/modules/players/interfaces/player.interface';
 import { StatusGame, type GameInterface } from '../interfaces/game.interface';
-import { TURN_TIME_LIMIT } from '@/modules/common/config/constants';
+import { LIMIT_MOVEMENTS_GAME, TURN_TIME_LIMIT } from '@/modules/common/config/constants';
 
 export const useGameStore = defineStore('game', () => {
   const playersGame = ref<PlayerSelectedInterface[]>([]);
   const currentTurn = ref<number>(1);
   const timeTurn = ref<number>(0);
+  const counterMovements = ref<number>(0);
   const game = ref<GameInterface>({
     winner: null,
     status: StatusGame.SET_VALUES,
@@ -83,6 +84,10 @@ export const useGameStore = defineStore('game', () => {
       currentTurn.value += 1;
     }
     timeTurn.value = 0;
+    if (counterMovements.value === LIMIT_MOVEMENTS_GAME) {
+      return;
+    }
+    counterMovements.value += 1;
     updateTimeTurn();
   }
   return {
@@ -99,6 +104,7 @@ export const useGameStore = defineStore('game', () => {
     },
     currentStatus: () => game.value.status,
     getPercentageTime: () => ((timeTurn.value / TURN_TIME_LIMIT) * 100),
+    currentPlayerGame: () => playersGame.value[currentTurn.value - 1],
     // * actions
     addPlayerToGame,
     updateDefaultValuesPlayers,

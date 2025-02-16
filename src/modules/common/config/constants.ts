@@ -13,3 +13,4 @@ export const COLORS_CLASS: string[] = [
 ];
 
 export const TURN_TIME_LIMIT = 5000; // 5 seconds
+export const LIMIT_MOVEMENTS_GAME = 9;
