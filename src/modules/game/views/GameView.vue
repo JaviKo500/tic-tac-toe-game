@@ -1,12 +1,10 @@
 <template>
-  <div class="shadow-md">
-    <SelectIconByPlayer />
-    <GridTicTac />
-    <div class="text-center">
-      <span class="text-2xl font-bold">Turn: {{ gameStore.currentPlayerGame().player.nickname }}</span>
-    </div>
-    <TimerProgress />
+  <SelectIconByPlayer />
+  <GridTicTac />
+  <div class="text-center">
+    <span class="text-2xl font-bold">Turn: {{ gameStore.currentPlayerGame().player.nickname }}</span>
   </div>
+  <TimerProgress />
   <PlayersGame />
 </template>
 <script setup lang="ts">
