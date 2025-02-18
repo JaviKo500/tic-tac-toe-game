@@ -7,7 +7,8 @@
       <div :class="[
         'flex h-25 w-25 items-center justify-center rounded-lg bg-gray-300 p-4',
         item.classBg && item.player ? item.classBg : 'bg-gray-300'
-      ]" v-for="(item, index) in option" :key="`${index}-option`">
+      ]" v-for="(item, index) in option" :key="`${index}-option`"
+        @click="gameStore.updateItemOptionMatrix(item.x, item.y, gameStore.currentPlayerGame())">
         <CircleIcon v-if="item.icon === 'X'" />
         <CloseIcon v-if="item.icon === 'O'" />
       </div>

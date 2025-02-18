@@ -69,10 +69,14 @@ export const useGameStore = defineStore('game', () => {
     game.value.status = status; 
   }
 
+  let idInterval: number | null = null;
   const updateTimeTurn = () => {
-    const id = setInterval(() => {
-      if ( id && timeTurn.value === TURN_TIME_LIMIT ) {
-        clearInterval(id);
+    if (idInterval) {
+      clearInterval(idInterval);
+    }
+    idInterval = setInterval(() => {
+      if ( idInterval && timeTurn.value === TURN_TIME_LIMIT ) {
+        clearInterval(idInterval);
         updateCurrentTurn();
         return;
       }
@@ -92,6 +96,17 @@ export const useGameStore = defineStore('game', () => {
     }
     counterMovements.value += 1;
     updateTimeTurn();
+  }
+
+  const updateItemOptionMatrix = ( x: number, y: number, playerSelected: PlayerSelectedInterface ) => {
+    const optionSelected = matrixOptions.value[x][y];
+    
+    if ( optionSelected.player ) return;
+
+    matrixOptions.value[x][y].player = playerSelected.player;
+    matrixOptions.value[x][y].classBg = playerSelected.player.colorClass;
+    matrixOptions.value[x][y].icon = playerSelected.icon;
+    updateCurrentTurn();
   }
   return {
 
@@ -115,5 +130,6 @@ export const useGameStore = defineStore('game', () => {
     updateIconByPlayer,
     updateStatusGame,
     updateTimeTurn,
+    updateItemOptionMatrix
   };
 });

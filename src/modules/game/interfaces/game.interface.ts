@@ -16,6 +16,6 @@ export interface BoxOptionItem {
   x: number;
   y: number;
   icon?: string;
-  player?: number;
+  player?: PlayerInterface;
   classBg?: string;
 }
