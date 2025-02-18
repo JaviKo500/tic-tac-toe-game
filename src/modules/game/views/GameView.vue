@@ -3,7 +3,7 @@
     <SelectIconByPlayer />
     <GridTicTac />
     <div class="text-center">
-      <span class="text-2xl font-bold">Turn: Player #{{ gameStore.currentTurn }}</span>
+      <span class="text-2xl font-bold">Turn: {{ gameStore.currentPlayerGame().player.nickname }}</span>
     </div>
     <TimerProgress />
   </div>

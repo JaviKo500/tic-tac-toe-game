@@ -5,13 +5,14 @@
     ]" :key="playerGame.player.id">
       <div class="relative card-body text-center">
         <CustomAvatar :player="playerGame.player" />
-        <div
-          class="absolute h-8 w-8 right-2 top-2 -ml-3  text-white p-1 text-xs bg-sky-500 font-medium tracking-wider rounded-full transition ease-in duration-300">
+        <div :class="[
+          'absolute h-8 w-8 right-2 top-2 -ml-3  text-white p-1 text-xs font-medium tracking-wider rounded-full transition ease-in duration-300',
+          playerGame.player.colorClass ? playerGame.player.colorClass : 'bg-sky-500'
+        ]">
           <CloseIcon v-if="playerGame.icon === 'X'" />
           <CircleIcon v-else />
         </div>
         <p class="text-white text-1xl">Player #{{ playerGame.order }}</p>
-        <small>{{ playerGame.player.nickname }}</small>
       </div>
     </div>
   </div>
