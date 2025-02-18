@@ -11,3 +11,11 @@ export enum StatusGame {
   IN_PROGRESS = 'IN_PROGRESS',
   END = 'END',
 }
+
+export interface BoxOptionItem {
+  x: number;
+  y: number;
+  icon?: string;
+  player?: number;
+  classBg?: string;
+}

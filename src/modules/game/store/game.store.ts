@@ -2,8 +2,9 @@ import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
 import type { IconGame, PlayerInterface, PlayerSelectedInterface } from '@/modules/players/interfaces/player.interface';
-import { StatusGame, type GameInterface } from '../interfaces/game.interface';
-import { LIMIT_MOVEMENTS_GAME, TURN_TIME_LIMIT } from '@/modules/common/config/constants';
+import { StatusGame, type BoxOptionItem, type GameInterface } from '../interfaces/game.interface';
+import { GAME_ITEMS_NUM, LIMIT_MOVEMENTS_GAME, TURN_TIME_LIMIT } from '@/modules/common/config/constants';
+import { createMatrixOption } from '@/modules/common/helpers';
 
 export const useGameStore = defineStore('game', () => {
   const playersGame = ref<PlayerSelectedInterface[]>([]);
@@ -14,6 +15,8 @@ export const useGameStore = defineStore('game', () => {
     winner: null,
     status: StatusGame.SET_VALUES,
   });
+
+  const matrixOptions = ref<BoxOptionItem[][]>(createMatrixOption( GAME_ITEMS_NUM ));
 
   const addPlayerToGame = (playerSelected: PlayerInterface) => {
     const playerFind = playersGame.value.find(({ player }) => player.id === playerSelected.id);
@@ -97,6 +100,7 @@ export const useGameStore = defineStore('game', () => {
     game,
     timeTurn,
     currentTurn,
+    matrixOptions,
     // * getters
     checkExistPlayer: (playerSelected: PlayerInterface) => {
       const playerFind = playersGame.value.find( ({player}) => player.id === playerSelected.id );
