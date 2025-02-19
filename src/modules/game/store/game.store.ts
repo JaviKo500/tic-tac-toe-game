@@ -18,6 +18,7 @@ export const useGameStore = defineStore('game', () => {
 
   const matrixOptions = ref<BoxOptionItem[][]>(createMatrixOption( GAME_ITEMS_NUM ));
 
+  
   const addPlayerToGame = (playerSelected: PlayerInterface) => {
     const playerFind = playersGame.value.find(({ player }) => player.id === playerSelected.id);
     if ( playerFind ){
