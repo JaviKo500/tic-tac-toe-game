@@ -1,5 +1,4 @@
 <template>
-  {{ gameStore.currentStatus() }}
   <div :class="[
     'col-start-1 row-start-1 grid place-content-center gap-4 rounded-lg font-mono text-sm leading-6 font-bold text-white my-4',
     `grid-cols-[repeat(3,100px)]`,

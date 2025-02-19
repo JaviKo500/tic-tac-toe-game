@@ -23,6 +23,8 @@ export const useGameStore = defineStore('game', () => {
     const playerFind = playersGame.value.find(({ player }) => player.id === playerSelected.id);
     if ( playerFind ){
       playersGame.value = playersGame.value.filter(({player}) => player.id !== playerSelected.id);
+      matrixOptions.value = createMatrixOption( GAME_ITEMS_NUM );
+      updateStatusGame(StatusGame.SET_VALUES);
       return;
     };
     if (playersGame.value.length === 2) return;
@@ -145,6 +147,13 @@ export const useGameStore = defineStore('game', () => {
       clearInterval(idInterval);
     }
   }
+  const tryAgain = () => {
+    currentTurn.value = 1;
+    game.value.status = StatusGame.SET_VALUES;
+    game.value.winner = null;
+    matrixOptions.value = createMatrixOption( GAME_ITEMS_NUM );
+    updateTimeTurn();
+  }
   return {
 
     // * properties
@@ -167,6 +176,7 @@ export const useGameStore = defineStore('game', () => {
     updateIconByPlayer,
     updateStatusGame,
     updateTimeTurn,
-    updateItemOptionMatrix
+    updateItemOptionMatrix,
+    tryAgain,
   };
 });
