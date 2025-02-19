@@ -5,6 +5,7 @@ import type { IconGame, PlayerInterface, PlayerSelectedInterface } from '@/modul
 import { StatusGame, type BoxOptionItem, type GameInterface } from '../interfaces/game.interface';
 import { GAME_ITEMS_NUM, LIMIT_MOVEMENTS_GAME, TURN_TIME_LIMIT } from '@/modules/common/config/constants';
 import { createMatrixOption } from '@/modules/common/helpers';
+import { checkWinCombination } from '../helpers/winsCombination.helper';
 
 export const useGameStore = defineStore('game', () => {
   const playersGame = ref<PlayerSelectedInterface[]>([]);
@@ -18,7 +19,6 @@ export const useGameStore = defineStore('game', () => {
 
   const matrixOptions = ref<BoxOptionItem[][]>(createMatrixOption( GAME_ITEMS_NUM ));
 
-  
   const addPlayerToGame = (playerSelected: PlayerInterface) => {
     const playerFind = playersGame.value.find(({ player }) => player.id === playerSelected.id);
     if ( playerFind ){
@@ -72,6 +72,7 @@ export const useGameStore = defineStore('game', () => {
 
   let idInterval: number | null = null;
   const updateTimeTurn = () => {
+    if ( game.value.status !== StatusGame.IN_PROGRESS ) return;
     if (idInterval) {
       clearInterval(idInterval);
     }
@@ -100,6 +101,8 @@ export const useGameStore = defineStore('game', () => {
   }
 
   const updateItemOptionMatrix = ( x: number, y: number, playerSelected: PlayerSelectedInterface ) => {
+    if ( game.value.status !== StatusGame.IN_PROGRESS ) return;
+
     const optionSelected = matrixOptions.value[x][y];
     
     if ( optionSelected.player ) return;
@@ -107,7 +110,34 @@ export const useGameStore = defineStore('game', () => {
     matrixOptions.value[x][y].player = playerSelected.player;
     matrixOptions.value[x][y].classBg = playerSelected.player.colorClass;
     matrixOptions.value[x][y].icon = playerSelected.icon;
+    const options = getMatrixOptionsSelected();
+    const isWinner = checkWinCombination(options);
+    if (isWinner) {
+      game.value.winner = playersGame.value[currentTurn.value - 1].player;
+      updateStatusGame(StatusGame.END);
+      return;
+    }
+    if (isCompletedMatrix()) {
+      updateStatusGame(StatusGame.TIE);
+      return;
+    }
     updateCurrentTurn();
+  }
+
+  const getMatrixOptionsSelected = () => {
+    const optionsSelected: string[] = [];
+    for (const option of matrixOptions.value) {
+      for (const item of option) {
+        if (item.player?.id === playersGame.value[currentTurn.value - 1].player.id) {
+          optionsSelected.push(`(${item.x},${item.y})`);
+        }
+      }
+    };
+    return optionsSelected;
+  }
+
+  const isCompletedMatrix = () => {
+    return matrixOptions.value.every((option) => option.every((item) => item.player));
   }
   return {
 

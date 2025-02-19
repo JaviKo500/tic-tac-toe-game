@@ -10,6 +10,7 @@ export enum StatusGame {
   NOT_STARTED = 'NOT_STARTED',
   IN_PROGRESS = 'IN_PROGRESS',
   END = 'END',
+  TIE = 'TIE',
 }
 
 export interface BoxOptionItem {
