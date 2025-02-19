@@ -73,9 +73,7 @@ export const useGameStore = defineStore('game', () => {
   let idInterval: number | null = null;
   const updateTimeTurn = () => {
     if ( game.value.status !== StatusGame.IN_PROGRESS ) return;
-    if (idInterval) {
-      clearInterval(idInterval);
-    }
+    cleanIntervals();
     idInterval = setInterval(() => {
       if ( idInterval && timeTurn.value === TURN_TIME_LIMIT ) {
         clearInterval(idInterval);
@@ -115,10 +113,12 @@ export const useGameStore = defineStore('game', () => {
     if (isWinner) {
       game.value.winner = playersGame.value[currentTurn.value - 1].player;
       updateStatusGame(StatusGame.END);
+      cleanIntervals();
       return;
     }
     if (isCompletedMatrix()) {
       updateStatusGame(StatusGame.TIE);
+      cleanIntervals();
       return;
     }
     updateCurrentTurn();
@@ -138,6 +138,12 @@ export const useGameStore = defineStore('game', () => {
 
   const isCompletedMatrix = () => {
     return matrixOptions.value.every((option) => option.every((item) => item.player));
+  }
+
+  const cleanIntervals = () => {
+    if (idInterval) {
+      clearInterval(idInterval);
+    }
   }
   return {
 
