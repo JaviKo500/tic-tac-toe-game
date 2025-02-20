@@ -1,6 +1,5 @@
-
 <template>
-  <CustomModal :is-open="isOpenCustomModal" >
+  <CustomModal :is-open="isOpenCustomModal">
     <template #content>
       <form action="" class="w-full">
         <div class="w-full">
@@ -10,17 +9,14 @@
           <input type="text" class="input w-full" placeholder="Type here" v-model="nickname" />
           <label for="genders" class="form-label mt-2">Gender</label>
           <div class="flex flex-wrap gap-2 my-1">
-            <button type="button"  
-              :class = "[
-                'p-2 rounded-full w-14 mr-2 flex-1', 
-                {
-                  'bg-gray-800': gender != genderOption.gender,
-                  'bg-sky-800': gender === genderOption.gender,
-                }
-              ]"
-              v-for="genderOption in GENDERS" :key="genderOption.gender"
-              @click="gender = genderOption.gender"
-              >{{ genderOption.label }}</button>
+            <button type="button" :class="[
+              'p-2 rounded-full w-14 mr-2 flex-1',
+              {
+                'bg-gray-800': gender != genderOption.gender,
+                'bg-sky-800': gender === genderOption.gender,
+              }
+            ]" v-for="genderOption in GENDERS" :key="genderOption.gender" @click="gender = genderOption.gender">{{
+              genderOption.label }}</button>
           </div>
           <div class="my-1">
             Color
@@ -35,9 +31,7 @@
     </template>
   </CustomModal>
   <div class="flex justify-center items-center h-screen">
-    <CustomMenu
-      @open-add-user-modal="isOpenCustomModal = true"
-    />
+    <CustomMenu @open-add-user-modal="isOpenCustomModal = true" />
     <main class="w-screen h-screen">
       <RouterView />
     </main>

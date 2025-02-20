@@ -1,7 +1,7 @@
 <template>
   <!-- component -->
   <div
-    class="py-4 rounded-lg mx-auto flex-row items-center justify-between overflow-hidden rounded-lg bg-base-300 px-6 flex w-screen">
+    class="py-4 rounded-lg mx-auto flex-row items-center justify-between overflow-hidden rounded-lg bg-base-300 px-6 flex w-full">
     <div class="flex flex-row items-center space-x-3 text-sm ">
       <span class="flex items-center">
         <DateIcon />
