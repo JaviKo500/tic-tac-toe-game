@@ -148,11 +148,19 @@ export const useGameStore = defineStore('game', () => {
     }
   }
   const tryAgain = () => {
+    resetValues();
+    updateTimeTurn();
+  }
+
+  const resetGame = () => {
+    resetValues();
+    playersGame.value = [];
+  }
+  const resetValues = () => {
     currentTurn.value = 1;
     game.value.status = StatusGame.SET_VALUES;
     game.value.winner = null;
     matrixOptions.value = createMatrixOption( GAME_ITEMS_NUM );
-    updateTimeTurn();
   }
   return {
 
@@ -178,5 +186,6 @@ export const useGameStore = defineStore('game', () => {
     updateTimeTurn,
     updateItemOptionMatrix,
     tryAgain,
+    resetGame,
   };
 });

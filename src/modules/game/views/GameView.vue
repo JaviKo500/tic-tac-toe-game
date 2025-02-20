@@ -1,4 +1,5 @@
 <template>
+  <FinishGame />
   <SelectIconByPlayer />
   <GridTicTac />
   <div class="text-center">
@@ -14,6 +15,7 @@ import PlayersGame from '../components/PlayersGame.vue';
 import TimerProgress from '../components/TimerProgress.vue';
 
 import { useGameStore } from '../store/game.store';
+import FinishGame from '../components/FinishGame.vue';
 
 const gameStore = useGameStore();
 </script>
