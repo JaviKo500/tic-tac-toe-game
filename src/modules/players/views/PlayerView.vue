@@ -6,6 +6,11 @@
     <div class="flex justify-center items-center">
       <div class="stats stats-vertical lg:stats-horizontal shadow">
         <div class="stat">
+          <div class="stat-title">Total</div>
+          <div class="stat-value">{{ player.points }}P</div>
+          <div class="stat-desc">Points winner in all games</div>
+        </div>
+        <div class="stat">
           <div class="stat-figure text-primary">
             <TicTacToeIcon />
           </div>
