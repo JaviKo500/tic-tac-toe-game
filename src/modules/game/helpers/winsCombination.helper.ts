@@ -16,8 +16,6 @@ export const checkWinCombination = (selectedOptions: string[]) => {
   for (const combination of WINS_COMBINATION) {
     const winsPoints = selectedOptions.filter((point) => combination.includes(point));
     if (winsPoints.length === 3) {
-      console.log('<--------------- JK WinsCombination.helper --------------->');
-      console.log({winsPoints});
       return true;
     }
   }

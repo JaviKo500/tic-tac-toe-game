@@ -3,9 +3,10 @@ import { ref } from 'vue';
 
 import type { IconGame, PlayerInterface, PlayerSelectedInterface } from '@/modules/players/interfaces/player.interface';
 import { StatusGame, type BoxOptionItem, type GameInterface } from '../interfaces/game.interface';
-import { GAME_ITEMS_NUM, LIMIT_MOVEMENTS_GAME, TURN_TIME_LIMIT } from '@/modules/common/config/constants';
+import { GAME_ITEMS_NUM, LIMIT_MOVEMENTS_GAME, POINTS_TIE, POINTS_WINNER, TURN_TIME_LIMIT } from '@/modules/common/config/constants';
 import { createMatrixOption } from '@/modules/common/helpers';
 import { checkWinCombination } from '../helpers/winsCombination.helper';
+import { usePlayersStore } from '@/modules/players/store/players.store';
 
 export const useGameStore = defineStore('game', () => {
   const playersGame = ref<PlayerSelectedInterface[]>([]);
@@ -16,6 +17,8 @@ export const useGameStore = defineStore('game', () => {
     winner: null,
     status: StatusGame.SET_VALUES,
   });
+
+  const playerStore = usePlayersStore();
 
   const matrixOptions = ref<BoxOptionItem[][]>(createMatrixOption( GAME_ITEMS_NUM ));
 
@@ -116,10 +119,30 @@ export const useGameStore = defineStore('game', () => {
       game.value.winner = playersGame.value[currentTurn.value - 1].player;
       updateStatusGame(StatusGame.END);
       cleanIntervals();
+      playersGame.value.forEach((playerGame) => {
+        playerStore.updatePlayerById(
+          playerGame.player.id, 
+          { 
+            wins: currentTurn.value === playerGame.order  ? 1 : 0,
+            losses: currentTurn.value !== playerGame.order  ? 1 : 0,
+            points: currentTurn.value === playerGame.order  ? POINTS_WINNER : 0,
+            games: playerGame.player.games + 1,
+          }
+        );
+      });
       return;
     }
     if (isCompletedMatrix()) {
       updateStatusGame(StatusGame.TIE);
+      playersGame.value.forEach((playerGame) => {
+        playerStore.updatePlayerById(
+          playerGame.player.id, 
+          { 
+            points: playerGame.player.points + POINTS_TIE,
+            games: playerGame.player.games + 1,
+          }
+        );
+      });
       cleanIntervals();
       return;
     }

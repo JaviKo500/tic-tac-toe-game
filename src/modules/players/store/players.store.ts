@@ -36,6 +36,14 @@ export const usePlayersStore = defineStore ( 'players', () => {
     return player;
   }
 
+  const updatePlayerById = async ( id: string, player: Partial<PlayerInterface> ) => {
+    const playerIndex = players.value.findIndex((player) => player.id === id);
+    if (playerIndex === -1) return;
+    players.value[playerIndex] = {
+      ...players.value[playerIndex],
+      ...player,
+    };
+  }
   return {
     // * properties
     players,
@@ -45,5 +53,6 @@ export const usePlayersStore = defineStore ( 'players', () => {
     // * actions
     addPlayer,
     getPlayerById,
+    updatePlayerById,
   };
 });
