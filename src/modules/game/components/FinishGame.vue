@@ -15,6 +15,14 @@
           <p class="text-2xl mt-4 text-sky-500 font-semibold">Winner</p>
           <p class="text-lg mt-2">{{ winner?.nickname }} <span class="font-black">+{{ POINTS_WINNER }}P</span></p>
         </template>
+        <template v-if="gameStore.currentStatus() === StatusGame.TIE">
+          <TicTacToeIcon class="w-16 h-16" />
+          <p class="text-2xl mt-4 text-sky-500 font-bold">Tied</p>
+          <div class="" v-for="playerGame in gameStore.playersGame" :key="playerGame.player.id">
+            <p class="text-lg mt-2">{{ playerGame.player?.nickname }} <span class="font-black">+{{ POINTS_TIE }}P</span>
+            </p>
+          </div>
+        </template>
         <button
           class="group relative h-10 w-40  mt-8 mb-4  overflow-hidden rounded-full bg-sky-500 text-lg font-bold text-white"
           @click="gameStore.tryAgain">
@@ -34,10 +42,11 @@ import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 
 import CustomAvatar from '@/modules/common/components/CustomAvatar.vue';
-import { POINTS_WINNER } from '@/modules/common/config/constants';
+import { POINTS_TIE, POINTS_WINNER } from '@/modules/common/config/constants';
 
 import { StatusGame } from '../interfaces/game.interface';
 import { useGameStore } from '../store/game.store';
+import TicTacToeIcon from '@/modules/common/icons/TicTacToeIcon.vue';
 
 const gameStore = useGameStore();
 
