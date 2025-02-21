@@ -16,23 +16,20 @@
       </RouterLink>
     </li>
     <li>
-      <a @click="back">
+      <a @click="goBack">
         <BackArrowIcon />
       </a>
     </li>
   </ul>
 </template>
 <script setup lang="ts">
-import { useRouter } from 'vue-router';
 
 import AddUserIcon from '@/modules/common/icons/AddUserIcon.vue';
 import BackArrowIcon from '@/modules/common/icons/BackArrowIcon.vue';
 import HomeIcon from '@/modules/common/icons/HomeIcon.vue';
 import InfoIcon from '@/modules/common/icons/InfoIcon.vue';
+import { useNavigation } from '@/modules/common/composables/go-back.composable';
 
 defineEmits(['open-add-user-modal']);
-const router = useRouter();
-const back = () => {
-  router.back();
-}
+const { goBack } = useNavigation();
 </script>

@@ -12,6 +12,18 @@ export const COLORS_CLASS: string[] = [
   'bg-orange-500',
 ];
 
+export const ALLOWED_THEMES: string[] = [
+  'default',
+  'retro',
+  'cyberpunk',
+  'lemonade',
+  'aqua',
+  'cupcake',
+  'luxury',
+  'dem',
+  'dracula'
+];
+
 export const TURN_TIME_LIMIT = 5000; // 5 seconds
 export const LIMIT_MOVEMENTS_GAME = 9;
 
