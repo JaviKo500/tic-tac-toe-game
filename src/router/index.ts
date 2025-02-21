@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import HomeLayout from '@/modules/home/layouts/HomeLayout.vue'
 import { gameRoutes } from '@/modules/game/routes'
+import { settingsRoutes } from '@/modules/settings/routes'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,6 +22,7 @@ const router = createRouter({
     },
     playersRoutes,
     gameRoutes,
+    settingsRoutes
   ],
 })
 
