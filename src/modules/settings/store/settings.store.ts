@@ -13,9 +13,9 @@ export const useSettingsStore = defineStore('settings', () => {
   const setTheme = (theme?: string) => {
     if ( settings.value.theme && !theme ) {
       theme = settings.value.theme;
+    } else if ( theme){
+      settings.value.theme = theme;
     }
-    console.log('<--------------- JK Settings.store --------------->');
-    console.log(settings.value);
     document.documentElement.setAttribute('data-theme', theme!);
   }
 
