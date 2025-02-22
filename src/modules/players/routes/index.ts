@@ -21,6 +21,11 @@ export const playersRoutes: RouteRecordRaw = {
       name: 'player-view',
       props: true,
       component: () => import('@/modules/players/views/PlayerView.vue'),
+    },
+    {
+      path: 'info',
+      name: 'info-view',
+      component: () => import('@/modules/players/views/InfoView.vue'),
     }
   ],
 };

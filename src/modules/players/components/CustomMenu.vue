@@ -11,7 +11,7 @@
       </a>
     </li>
     <li>
-      <RouterLink :to="{ name: 'game-layout' }">
+      <RouterLink :to="{ name: 'info-view' }">
         <InfoIcon />
       </RouterLink>
     </li>
