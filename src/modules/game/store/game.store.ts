@@ -120,28 +120,46 @@ export const useGameStore = defineStore('game', () => {
       updateStatusGame(StatusGame.END);
       cleanIntervals();
       playersGame.value.forEach((playerGame) => {
+        let wins = playerGame.player.wins;
+        let losses = playerGame.player.losses;
+        let points = playerGame.player.points;
+        let games = playerGame.player.games;
+
+        games += 1;
+        if ( playerGame.player.id === game.value.winner?.id ) {
+          wins += 1;
+          points += POINTS_WINNER;
+        } else {
+          losses += 1;
+        }
+
         playerStore.updatePlayerById(
           playerGame.player.id, 
           { 
-            wins: currentTurn.value === playerGame.order  ? 1 : 0,
-            losses: currentTurn.value !== playerGame.order  ? 1 : 0,
-            points: currentTurn.value === playerGame.order  ? POINTS_WINNER : 0,
-            games: playerGame.player.games + 1,
+            wins,
+            losses,
+            points,
+            games,
           }
         );
+
+        playerGame.player = { ...playerGame.player, wins, losses, points, games };
       });
       return;
     }
     if (isCompletedMatrix()) {
       updateStatusGame(StatusGame.TIE);
       playersGame.value.forEach((playerGame) => {
+        const points = playerGame.player.points + POINTS_TIE;
+        const games = playerGame.player.games + 1;
         playerStore.updatePlayerById(
           playerGame.player.id, 
           { 
-            points: playerGame.player.points + POINTS_TIE,
-            games: playerGame.player.games + 1,
+            points,
+            games,
           }
         );
+        playerGame.player = { ...playerGame.player, points, games };
       });
       cleanIntervals();
       return;
